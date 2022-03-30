@@ -3,23 +3,18 @@ package com.example.jcomposecrytoapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.jcomposecrytoapp.View.CryptoDetailScreen
-import com.example.jcomposecrytoapp.View.CryptoListScreen
+import com.example.jcomposecrytoapp.view.CryptoDetailScreen
+import com.example.jcomposecrytoapp.view.CryptoListScreen
 import com.example.jcomposecrytoapp.ui.theme.JComposeCrytoAppTheme
 import androidx.compose.runtime.remember
-import androidx.compose.material.OutlinedTextField
-import androidx.compose.runtime.mutableStateOf
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

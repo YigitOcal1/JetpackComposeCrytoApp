@@ -1,4 +1,4 @@
-package com.example.jcomposecrytoapp.View
+package com.example.jcomposecrytoapp.view
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
