@@ -9,4 +9,5 @@ fun CryptoDetailScreen(id:String,
                        price:String,
                        navController: NavController){
     Text(text = "detail screen")
+
 }
