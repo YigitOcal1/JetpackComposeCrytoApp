@@ -19,8 +19,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideCryptoRepository(
-        api: CryptoAPI
-    )= CryptoRepository(api)
+            api: CryptoAPI
+        )= CryptoRepository(api)
 
 
     @Singleton

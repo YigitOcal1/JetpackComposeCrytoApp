@@ -22,12 +22,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             JComposeCrytoAppTheme {
                 val navController= rememberNavController()
-                NavHost(navController = navController, startDestination = "cryto_list_screen"){
+                NavHost(navController = navController, startDestination = "crypto_list_screen"){
 
                     composable("crypto_list_screen"){
                         CryptoListScreen(navController = navController)
                     }
-                    composable("cryto_detail_screen/{cryptoId}/{cryptoPrice}",arguments = listOf(
+                    composable("crypto_detail_screen/{cryptoId}/{cryptoPrice}",arguments = listOf(
                         navArgument(name="cryptoId",){
                             type=NavType.StringType
                         },

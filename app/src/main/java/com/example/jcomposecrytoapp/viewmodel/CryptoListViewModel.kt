@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.example.jcomposecrytoapp.util.Resource
 import com.example.jcomposecrytoapp.model.CryptoListItem
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @HiltViewModel
@@ -17,6 +18,35 @@ class CryptoListViewModel  @Inject constructor(
         var errorMessage= mutableStateOf("")
         var isLoading= mutableStateOf(false)
 
+    private var initialCryptoList= listOf<CryptoListItem>()
+    private var isSearchStarting=true
+    init {
+    loadCryptos()
+    }
+
+    fun searchCryptoList(query:String){
+        val listToSearch=if(isSearchStarting){
+            cryptoList.value
+        }
+        else{
+            initialCryptoList
+        }
+        viewModelScope.launch(Dispatchers.Default) {
+            if(query.isEmpty()){
+                cryptoList.value=initialCryptoList
+                isSearchStarting=true
+                return@launch
+            }
+            val results=listToSearch.filter {
+                it.currency.contains(query.trim(),ignoreCase = true)
+            }
+            if(isSearchStarting){
+                initialCryptoList=cryptoList.value
+                isSearchStarting=false
+            }
+            cryptoList.value=results
+        }
+    }
     fun loadCryptos(){
 
         viewModelScope.launch {
